@@ -199,6 +199,8 @@ async function initializePage() {
                 const logoLink = document.createElement("a");
                 logoLink.id = "site-logo-link";
                 logoLink.href = site.logo_link;
+                logoLink.target = "_blank";
+                logoLink.rel = "noopener noreferrer";
                 logoLink.appendChild(logo);
                 siteHeader.appendChild(logoLink);
             } else {
