@@ -39,6 +39,22 @@
             height: 500px;
         }
 
+        #site-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        #site-logo {
+            max-height: 64px;
+            max-width: min(240px, 80vw);
+            object-fit: contain;
+        }
+
         {% block css %}{% endblock %}
     </style>
 </head>
@@ -153,13 +169,26 @@ async function initializePage() {
 
         const dict = lang || {};
         const site = cfg.site || {};
+        const titleText = `${site.title || ""}${site.domain ? " (" + site.domain + ")" : ""}`;
 
         // Title
         document.title = "Meshview - " + (site.title || "");
 
         // Header & Message
-        document.getElementById("site-header").innerHTML =
-            `<strong>${site.title || ""} ${site.domain ? "(" + site.domain + ")" : ""}</strong>`;
+        const siteHeader = document.getElementById("site-header");
+        siteHeader.innerHTML = "";
+
+        if (site.logo) {
+            const logo = document.createElement("img");
+            logo.id = "site-logo";
+            logo.src = site.logo;
+            logo.alt = site.title ? `${site.title} logo` : "Site logo";
+            siteHeader.appendChild(logo);
+        }
+
+        const title = document.createElement("strong");
+        title.textContent = titleText;
+        siteHeader.appendChild(title);
 
         document.getElementById("site-message").textContent = site.message || "";
 

@@ -256,6 +256,10 @@ language = es
 # Site title to show in the browser title bar and headers.
 title = Bay Area Mesh
 
+# Optional logo URL/path to show in the page header.
+# Place local images in meshview/static and reference them as /static/logo.png.
+logo =
+
 # A brief message shown on the homepage.
 message = Real time data from around the bay area and beyond.
 

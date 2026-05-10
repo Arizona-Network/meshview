@@ -611,6 +611,7 @@ async def api_config(request):
             "domain": get_str(site, "domain", ""),
             "language": get_str(site, "language", "en"),
             "title": get_str(site, "title", ""),
+            "logo": get_str(site, "logo", ""),
             "message": get_str(site, "message", ""),
             "starting": get_str(site, "starting", "/chat"),
             "nodes": get_bool(site, "nodes", True),
