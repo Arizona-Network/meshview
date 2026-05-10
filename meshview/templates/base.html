@@ -55,6 +55,12 @@
             object-fit: contain;
         }
 
+        #site-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         {% block css %}{% endblock %}
     </style>
 </head>
@@ -183,7 +189,21 @@ async function initializePage() {
             logo.id = "site-logo";
             logo.src = site.logo;
             logo.alt = site.title ? `${site.title} logo` : "Site logo";
-            siteHeader.appendChild(logo);
+
+            if (site.logo_height) {
+                logo.style.maxHeight = site.logo_height;
+                logo.style.height = site.logo_height;
+            }
+
+            if (site.logo_link) {
+                const logoLink = document.createElement("a");
+                logoLink.id = "site-logo-link";
+                logoLink.href = site.logo_link;
+                logoLink.appendChild(logo);
+                siteHeader.appendChild(logoLink);
+            } else {
+                siteHeader.appendChild(logo);
+            }
         }
 
         const title = document.createElement("strong");

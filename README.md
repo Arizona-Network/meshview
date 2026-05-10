@@ -260,6 +260,12 @@ title = Bay Area Mesh
 # Place local images in meshview/static and reference them as /static/logo.png.
 logo =
 
+# Optional URL to open when the logo is clicked.
+logo_link =
+
+# Optional logo height. Use a CSS size such as 64px, 4rem, or 10vh.
+logo_height =
+
 # A brief message shown on the homepage.
 message = Real time data from around the bay area and beyond.
 
