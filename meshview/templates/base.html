@@ -165,6 +165,22 @@ function fillPortnumSelect(dict, selectedValue) {
     }
 }
 
+function renderFooter(site, dict) {
+    const footer = document.getElementById("footer");
+    if (!footer) return;
+
+    if (site.contact_email) {
+        footer.innerHTML = "";
+        const contactLink = document.createElement("a");
+        contactLink.href = `mailto:${site.contact_email}`;
+        contactLink.textContent = site.contact_email;
+        footer.append("Contact: ", contactLink);
+        return;
+    }
+
+    footer.innerHTML = dict.footer || "";
+}
+
 // --- Main Init ---
 async function initializePage() {
     try {
@@ -238,6 +254,7 @@ async function initializePage() {
 
         // Apply translations
         applyTranslations(dict);
+        renderFooter(site, dict);
         fillPortnumSelect(dict, "{{ portnum or '' }}");
 
         document.body.classList.add("ready");
